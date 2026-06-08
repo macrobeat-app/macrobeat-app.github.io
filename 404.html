@@ -20,11 +20,11 @@
       padding: 32px 24px;
       text-align: center;
     }
-    .logo { display: flex; gap: 5px; align-items: flex-end; margin-bottom: 32px; }
-    .bar { width: 10px; border-radius: 4px; }
-    .bar-p { height: 36px; background: #4CAF82; }
-    .bar-c { height: 28px; background: #C9A84C; }
-    .bar-f { height: 20px; background: #C0504D; }
+    .logo {
+      width: 120px;
+      height: auto;
+      margin-bottom: 32px;
+    }
     #share, #notfound {
       display: flex;
       flex-direction: column;
@@ -33,16 +33,22 @@
     }
     h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 12px; }
     p { font-size: 16px; color: rgba(255,255,255,0.55); line-height: 1.5; max-width: 300px; margin-bottom: 40px; }
-    .btn { display: inline-block; background: #fff; color: #0D0D0D; font-size: 16px; font-weight: 600; padding: 16px 32px; border-radius: 14px; text-decoration: none; letter-spacing: -0.2px; }
+    .btn {
+      display: inline-block;
+      background: #fff;
+      color: #0D0D0D;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 16px 32px;
+      border-radius: 14px;
+      text-decoration: none;
+      letter-spacing: -0.2px;
+    }
     .sub { margin-top: 20px; font-size: 13px; color: rgba(255,255,255,0.3); }
   </style>
 </head>
 <body>
-  <div class="logo">
-    <div class="bar bar-p"></div>
-    <div class="bar bar-c"></div>
-    <div class="bar bar-f"></div>
-  </div>
+  <img class="logo" src="/assets/splash-logo.png" alt="Macrobeat" />
   <div id="share">
     <h1>Someone shared a meal with you</h1>
     <p>Open Macrobeat to view the meal and add it to your diary.</p>
