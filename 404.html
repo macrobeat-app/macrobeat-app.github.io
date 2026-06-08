@@ -9,9 +9,10 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      background: #0D0D0D;
+      background: radial-gradient(ellipse 118% 118% at 50% -2%, #12455F 0%, #0B2A3B 30%, #061520 60%, #000 100%);
+      background-color: #0D0D0D;
       color: #fff;
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -20,46 +21,109 @@
       padding: 32px 24px;
       text-align: center;
     }
-    .logo {
-      width: 120px;
-      height: auto;
-      margin-bottom: 32px;
+
+    /* ── Logo mark ── */
+    .logo-mark {
+      display: flex;
+      gap: 10px;
+      align-items: flex-end;
+      margin-bottom: 20px;
     }
+    .track {
+      width: 28px;
+      height: 160px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.08);
+      position: relative;
+      overflow: hidden;
+    }
+    .bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border-radius: 14px;
+    }
+    .bar-protein { height: 69%; background: #6BCB77; box-shadow: 0 0 18px 4px rgba(107,203,119,0.45); }
+    .bar-carbs   { height: 90%; background: #FFD93D; box-shadow: 0 0 18px 4px rgba(255,217,61,0.45); }
+    .bar-fat     { height: 57%; background: #FF6B6B; box-shadow: 0 0 18px 4px rgba(255,107,107,0.45); }
+
+    /* ── Wordmark ── */
+    .wordmark {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+      line-height: 1;
+    }
+    .wordmark-lead { color: #fff; }
+    .wordmark-beat {
+      background: linear-gradient(90deg, #6BCB77, #FFD93D, #FF6B6B);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── Tagline ── */
+    .tagline {
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.1px;
+      margin-bottom: 48px;
+    }
+
+    /* ── Content blocks ── */
     #share, #notfound {
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
     }
-    h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 12px; }
-    p { font-size: 16px; color: rgba(255,255,255,0.55); line-height: 1.5; max-width: 300px; margin-bottom: 40px; }
+    h1 { font-size: 24px; font-weight: 700; letter-spacing: -0.4px; margin-bottom: 10px; }
+    .subtitle { font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.55; max-width: 280px; margin-bottom: 36px; }
     .btn {
       display: inline-block;
       background: #fff;
       color: #0D0D0D;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 600;
-      padding: 16px 32px;
+      padding: 15px 28px;
       border-radius: 14px;
       text-decoration: none;
       letter-spacing: -0.2px;
     }
-    .sub { margin-top: 20px; font-size: 13px; color: rgba(255,255,255,0.3); }
+    .hint { margin-top: 16px; font-size: 12px; color: rgba(255,255,255,0.25); }
   </style>
 </head>
 <body>
-  <img class="logo" src="/assets/splash-logo.png" alt="Macrobeat" />
+  <!-- Logo mark -->
+  <div class="logo-mark">
+    <div class="track"><div class="bar bar-protein"></div></div>
+    <div class="track"><div class="bar bar-carbs"></div></div>
+    <div class="track"><div class="bar bar-fat"></div></div>
+  </div>
+
+  <!-- Wordmark -->
+  <div class="wordmark">
+    <span class="wordmark-lead">Macro</span><span class="wordmark-beat">beat</span>
+  </div>
+  <p class="tagline">Track smarter. Not harder.</p>
+
+  <!-- Share fallback -->
   <div id="share">
     <h1>Someone shared a meal with you</h1>
-    <p>Open Macrobeat to view the meal and add it to your diary.</p>
+    <p class="subtitle">Open Macrobeat to view the meal and add it to your diary.</p>
     <a class="btn" href="https://apps.apple.com/app/macrobeat/id6744042588">Get Macrobeat on the App Store</a>
-    <p class="sub">Already have it? The link will open automatically.</p>
+    <p class="hint">Already have it? The link will open automatically.</p>
   </div>
+
+  <!-- Generic 404 -->
   <div id="notfound" style="display:none">
     <h1>Page not found</h1>
-    <p>The page you are looking for does not exist.</p>
+    <p class="subtitle">The page you are looking for does not exist.</p>
     <a class="btn" href="/">Go to Macrobeat</a>
   </div>
+
   <script>
     var parts = window.location.pathname.split("/").filter(Boolean);
     if (parts[0] === "share" && parts.length >= 2) {
