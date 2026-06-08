@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Macrobeat — Shared Meal</title>
+  <meta property="og:title" content="Someone shared a meal with you" />
+  <meta property="og:description" content="Open Macrobeat to view and relog this meal." />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0D0D0D;
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 24px;
+      text-align: center;
+    }
+    .logo { display: flex; gap: 5px; align-items: flex-end; margin-bottom: 32px; }
+    .bar { width: 10px; border-radius: 4px; }
+    .bar-p { height: 36px; background: #4CAF82; }
+    .bar-c { height: 28px; background: #C9A84C; }
+    .bar-f { height: 20px; background: #C0504D; }
+    h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 12px; }
+    p { font-size: 16px; color: rgba(255,255,255,0.55); line-height: 1.5; max-width: 300px; margin-bottom: 40px; }
+    .btn { display: inline-block; background: #fff; color: #0D0D0D; font-size: 16px; font-weight: 600; padding: 16px 32px; border-radius: 14px; text-decoration: none; letter-spacing: -0.2px; }
+    .sub { margin-top: 20px; font-size: 13px; color: rgba(255,255,255,0.3); }
+  </style>
+</head>
+<body>
+  <div class="logo">
+    <div class="bar bar-p"></div>
+    <div class="bar bar-c"></div>
+    <div class="bar bar-f"></div>
+  </div>
+  <div id="share">
+    <h1>Someone shared a meal with you</h1>
+    <p>Open Macrobeat to view the meal and add it to your diary.</p>
+    <a class="btn" href="https://apps.apple.com/app/macrobeat/id6744042588">Get Macrobeat on the App Store</a>
+    <p class="sub">Already have it? The link will open automatically.</p>
+  </div>
+  <div id="notfound" style="display:none">
+    <h1>Page not found</h1>
+    <p>The page you are looking for does not exist.</p>
+    <a class="btn" href="/">Go to Macrobeat</a>
+  </div>
+  <script>
+    var parts = window.location.pathname.split("/").filter(Boolean);
+    if (parts[0] === "share" && parts.length >= 2) {
+      setTimeout(function() {
+        window.location.href = "macrobeat://share/" + parts[1];
+      }, 300);
+    } else {
+      document.getElementById("share").style.display = "none";
+      document.getElementById("notfound").style.display = "block";
+    }
+  </script>
+</body>
+</html>
