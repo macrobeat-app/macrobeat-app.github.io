@@ -3,8 +3,16 @@
     "apps": [],
     "details": [
       {
+        "appID": "6Z2C223GKF.com.bohdant.macrobeat.staging",
+        "paths": [
+          "/staging/share/*"
+        ]
+      },
+      {
         "appID": "6Z2C223GKF.com.bohdant.macrobeat",
-        "paths": ["/share/*"]
+        "paths": [
+          "/share/*"
+        ]
       }
     ]
   }
